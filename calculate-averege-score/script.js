@@ -20,6 +20,8 @@ Test data:
 § Data Bonus 2: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 106
 */
 
+'use strict';
+
 // * Round Points of each Team
 const roundScores = {
     "dolphins": {
