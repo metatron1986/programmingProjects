@@ -16,6 +16,8 @@ Data 1: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m
 Data 2: Marks weights 95 kg and is 1.88 m tall. John weights 85 kg and is 1.76 m tall.
 */
 
+'use strict';
+
 // * BodyData of each person
 const BodyData = {
     "mark": {
