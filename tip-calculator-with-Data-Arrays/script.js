@@ -19,7 +19,7 @@ values (so don't store the tip values in separate variables first, but right in 
 array)
 */
 
-"use strict";
+'use strict';
 
 // * Changeable invoices
 const invoices = {
@@ -35,7 +35,7 @@ const tipData = {
 };
 
 // * Tip calculation
-const calcTip = (invoiceAmount) =>
+const calcTip = invoiceAmount =>
   invoiceAmount < 50
     ? tipData.tipOne
     : invoiceAmount >= 50 && invoiceAmount <= 300
@@ -86,4 +86,10 @@ console.log(
   totalInvoices.peter[2]
 );
 
-console.log("skfhsjhfkjsdh");
+
+
+
+
+
+
+
