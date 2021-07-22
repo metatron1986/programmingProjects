@@ -24,46 +24,49 @@ length of the array (because that's the number of elements)
 4.3. Call the function with the 'totals' array
 */
 
-'use strict';
+"use strict";
 
 // * Changeable invoices
 const invoices = {
-    "steven": [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52],
-    "peter": [150, 360, 86, 75, 130, 210, 86, 15, 99, 530]
+  steven: [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52],
+  peter: [150, 360, 86, 75, 130, 210, 86, 15, 99, 530],
 };
 
 // * Tip Data in percent depending on invoice amount
 const tipData = {
-    "tipOne": 0, // less then 50
-    "tipTwo": 15, // between 50 and 300 
-    "tipThree": 20 // greater then 300
+  tipOne: 0, // less then 50
+  tipTwo: 15, // between 50 and 300
+  tipThree: 20, // greater then 300
 };
 
 // * Tip calculation
-const calcTip = invoiceAmount => invoiceAmount < 50 ? tipData.tipOne : invoiceAmount >= 50 && invoiceAmount <= 300 
-    ? invoiceAmount * (tipData.tipTwo / 100) : invoiceAmount * (tipData.tipThree / 100);
-
+const calcTip = (invoiceAmount) =>
+  invoiceAmount < 50
+    ? tipData.tipOne
+    : invoiceAmount >= 50 && invoiceAmount <= 300
+    ? invoiceAmount * (tipData.tipTwo / 100)
+    : invoiceAmount * (tipData.tipThree / 100);
 
 // * General tips from each person
 const tips = {
-    "steven": [],
-    "peter": []
-}
+  steven: [],
+  peter: [],
+};
 
 // * Total invoices for each person
 const totalInvoices = {
-    "steven": [],
-    "peter": []
-}
+  steven: [],
+  peter: [],
+};
 
 for (let i = 0; i < invoices.steven.length; i++) {
-    tips.steven.push(calcTip(invoices.steven[i]));
-    totalInvoices.steven.push(invoices.steven[i] + calcTip(invoices.steven[i]));
+  tips.steven.push(calcTip(invoices.steven[i]));
+  totalInvoices.steven.push(invoices.steven[i] + calcTip(invoices.steven[i]));
 }
 
 for (let i = 0; i < invoices.peter.length; i++) {
-    tips.peter.push(calcTip(invoices.peter[i]));
-    totalInvoices.peter.push(invoices.peter[i] + calcTip(invoices.peter[i]));
+  tips.peter.push(calcTip(invoices.peter[i]));
+  totalInvoices.peter.push(invoices.peter[i] + calcTip(invoices.peter[i]));
 }
 
 console.log(tips.steven);
@@ -71,14 +74,13 @@ console.log(tips.peter);
 console.log(totalInvoices.steven);
 console.log(totalInvoices.peter);
 
-
-const calcAverage = function(arr) {
-    let sum = 0;
-    for (let i = 0; i < arr.length; i++) {
-        sum += arr[i];
-    }
-    return sum / arr.length;
-}
+const calcAverage = function (arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum / arr.length;
+};
 
 console.log(calcAverage(tips.steven));
 console.log(calcAverage(tips.peter));

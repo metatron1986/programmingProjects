@@ -16,25 +16,24 @@ Data 1: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m
 Data 2: Marks weights 95 kg and is 1.88 m tall. John weights 85 kg and is 1.76 m tall.
 */
 
-'use strict';
+"use strict";
 
 // * BodyData of each person
 const BodyData = {
-    "mark": {
-        "mass": 78, // kg
-        "height": 1.69 // Meter
-    },
-    "john": {
-        "mass": 92, // kg
-        "height": 1.95 // Meter
-    }
-
+  mark: {
+    mass: 78, // kg
+    height: 1.69, // Meter
+  },
+  john: {
+    mass: 92, // kg
+    height: 1.95, // Meter
+  },
 };
 
 // * bmi calculation
 const bmi = function (mass, height) {
-    return mass / height ** 2;
-}
+  return mass / height ** 2;
+};
 
 // * Saving BMI of each Person
 const marksBmi = bmi(BodyData.mark.mass, BodyData.mark.height);
@@ -50,7 +49,6 @@ console.log(johnsBmi);
 // * boolean output whether one person's bmi is greater than the other person's bmi
 console.log(markHigherBMI);
 
-
 /*
 Use the BMI example from Challenge #1, and the code you already wrote, and
 improve it.
@@ -63,12 +61,12 @@ BMI (28.3) is higher than John's (23.9)!"
 
 // * Return whose bmi is greater
 const whichBmiIsBigger = function () {
-    if (markHigherBMI === true) {
-        return `Mark's BMI ${(marksBmi)} is higher than John's ${(johnsBmi)}`;
-    } else {
-        return `John's BMI ${(johnsBmi)} is higher than Mark's ${(marksBmi)}`;
-    }
-}
+  if (markHigherBMI === true) {
+    return `Mark's BMI ${marksBmi} is higher than John's ${johnsBmi}`;
+  } else {
+    return `John's BMI ${johnsBmi} is higher than Mark's ${marksBmi}`;
+  }
+};
 
 // * Output whose bmi is greater
 console.log(whichBmiIsBigger());

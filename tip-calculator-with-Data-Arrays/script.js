@@ -19,58 +19,71 @@ values (so don't store the tip values in separate variables first, but right in 
 array)
 */
 
-'use strict';
+"use strict";
 
 // * Changeable invoices
 const invoices = {
-    "steven": [125, 555, 44],
-    "peter": [150, 360, 87]
+  steven: [125, 555, 44],
+  peter: [150, 360, 87],
 };
 
 // * Tip Data in percent depending on invoice amount
 const tipData = {
-    "tipOne": 0, // less then 50
-    "tipTwo": 15, // between 50 and 300 
-    "tipThree": 20 // greater then 300
+  tipOne: 0, // less then 50
+  tipTwo: 15, // between 50 and 300
+  tipThree: 20, // greater then 300
 };
 
 // * Tip calculation
-const calcTip = invoiceAmount => invoiceAmount < 50 ? tipData.tipOne : invoiceAmount >= 50 && invoiceAmount <= 300 
-    ? invoiceAmount * (tipData.tipTwo / 100) : invoiceAmount * (tipData.tipThree / 100);
+const calcTip = (invoiceAmount) =>
+  invoiceAmount < 50
+    ? tipData.tipOne
+    : invoiceAmount >= 50 && invoiceAmount <= 300
+    ? invoiceAmount * (tipData.tipTwo / 100)
+    : invoiceAmount * (tipData.tipThree / 100);
 
 // * General tips from each person
 const tips = {
-    "steven": [
-        calcTip(invoices.steven[0]), 
-        calcTip(invoices.steven[1]), 
-        calcTip(invoices.steven[2])
-    ],
-    "peter": [
-        calcTip(invoices.peter[0]), 
-        calcTip(invoices.peter[1]), 
-        calcTip(invoices.peter[2])
-    ]
-}
+  steven: [
+    calcTip(invoices.steven[0]),
+    calcTip(invoices.steven[1]),
+    calcTip(invoices.steven[2]),
+  ],
+  peter: [
+    calcTip(invoices.peter[0]),
+    calcTip(invoices.peter[1]),
+    calcTip(invoices.peter[2]),
+  ],
+};
 
 // * Output tips
 console.log(tips.steven);
 console.log(tips.peter);
 
-
 // * Total invoices for each person
 const totalInvoices = {
-    "steven": [
-        invoices.steven[0] + tips.steven[0],
-        invoices.steven[1] + tips.steven[1],
-        invoices.steven[2] + tips.steven[2]
-    ],
-    "peter": [
-        invoices.peter[0] + tips.peter[0],
-        invoices.peter[1] + tips.peter[1],
-        invoices.peter[2] + tips.peter[2]
-    ]
-}
+  steven: [
+    invoices.steven[0] + tips.steven[0],
+    invoices.steven[1] + tips.steven[1],
+    invoices.steven[2] + tips.steven[2],
+  ],
+  peter: [
+    invoices.peter[0] + tips.peter[0],
+    invoices.peter[1] + tips.peter[1],
+    invoices.peter[2] + tips.peter[2],
+  ],
+};
 
 // * Output each invoice for each person
-console.log(totalInvoices.steven[0], totalInvoices.steven[1], totalInvoices.steven[2]);
-console.log(totalInvoices.peter[0], totalInvoices.peter[1], totalInvoices.peter[2]);
+console.log(
+  totalInvoices.steven[0],
+  totalInvoices.steven[1],
+  totalInvoices.steven[2]
+);
+console.log(
+  totalInvoices.peter[0],
+  totalInvoices.peter[1],
+  totalInvoices.peter[2]
+);
+
+console.log("skfhsjhfkjsdh");

@@ -14,36 +14,39 @@ Test data: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.9
 tall.
 */
 
-'use strict';
+"use strict";
 
 // * dataForBMICalculation of each person
 const dataForBMICalculation = {
-    persons: {
-        mark: {
-            fullName: 'Mark Miller',
-            mass: 78, // kg
-            height: 1.69, // Meter
-            // * bmi calculation
-            calcBMIMark: function () { // bmi calculation
-                return this.mass / this.height ** 2;
-            }
-        },
-        john: {
-            fullName: 'John Smith',
-            mass: 92, // kg
-            height: 1.95, // Meter
-            calcBMIJohn: function () { // bmi calculation
-                return this.mass / this.height ** 2;
-            }
-        }
-    }
+  persons: {
+    mark: {
+      fullName: "Mark Miller",
+      mass: 78, // kg
+      height: 1.69, // Meter
+      // * bmi calculation
+      calcBMIMark: function () {
+        // bmi calculation
+        return this.mass / this.height ** 2;
+      },
+    },
+    john: {
+      fullName: "John Smith",
+      mass: 92, // kg
+      height: 1.95, // Meter
+      calcBMIJohn: function () {
+        // bmi calculation
+        return this.mass / this.height ** 2;
+      },
+    },
+  },
 };
 
-
 // * Comparison bmi of two persons
-const markHigherBMI = 
-dataForBMICalculation.persons.mark.calcBMIMark() > 
-dataForBMICalculation.persons.john.calcBMIJohn() ? true : false;
+const markHigherBMI =
+  dataForBMICalculation.persons.mark.calcBMIMark() >
+  dataForBMICalculation.persons.john.calcBMIJohn()
+    ? true
+    : false;
 
 // * Bmi output
 console.log(dataForBMICalculation.persons.mark.calcBMIMark());
@@ -52,15 +55,26 @@ console.log(dataForBMICalculation.persons.john.calcBMIJohn());
 // * boolean output whether one person's bmi is greater than the other person's bmi
 console.log(markHigherBMI);
 
-
 // * Return whose bmi is greater
 const whichBmiIsBigger = function () {
-    if (markHigherBMI === true) {
-        return `${dataForBMICalculation.persons.mark.fullName.substring(0, 4)}'s BMI ${(dataForBMICalculation.persons.mark.calcBMIMark())} is higher than ${dataForBMICalculation.persons.john.fullName.substring(0, 4)}'s ${(dataForBMICalculation.persons.john.calcBMIJohn())}!`;
-    } else {
-        return `${dataForBMICalculation.persons.john.fullName.substring(0, 4)}'s BMI ${(dataForBMICalculation.persons.john.calcBMIJohn())} is higher than ${dataForBMICalculation.persons.mark.fullName.substring(0, 4)}'s ${(dataForBMICalculation.persons.mark.calcBMIMark())}!`;
-    }
-}
+  if (markHigherBMI === true) {
+    return `${dataForBMICalculation.persons.mark.fullName.substring(
+      0,
+      4
+    )}'s BMI ${dataForBMICalculation.persons.mark.calcBMIMark()} is higher than ${dataForBMICalculation.persons.john.fullName.substring(
+      0,
+      4
+    )}'s ${dataForBMICalculation.persons.john.calcBMIJohn()}!`;
+  } else {
+    return `${dataForBMICalculation.persons.john.fullName.substring(
+      0,
+      4
+    )}'s BMI ${dataForBMICalculation.persons.john.calcBMIJohn()} is higher than ${dataForBMICalculation.persons.mark.fullName.substring(
+      0,
+      4
+    )}'s ${dataForBMICalculation.persons.mark.calcBMIMark()}!`;
+  }
+};
 
 // * Output whose bmi is greater
 console.log(whichBmiIsBigger());

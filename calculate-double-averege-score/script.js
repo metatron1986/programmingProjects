@@ -24,39 +24,48 @@ Hints:
 Apply this to the team's average scores
 */
 
-'use strict';
+"use strict";
 
 // * Round Points of each Team
 const roundScores = {
-    "dolphins": {
-        "roundOne": 23,
-        "roundTow": 34,
-        "roundThree": 33
-    },
-    "koalas": {
-        "roundOne": 85,
-        "roundTow": 54,
-        "roundThree": 41
-    }
-}
+  dolphins: {
+    roundOne: 23,
+    roundTow: 34,
+    roundThree: 33,
+  },
+  koalas: {
+    roundOne: 85,
+    roundTow: 54,
+    roundThree: 41,
+  },
+};
 
 // * Average score calculation
-const calcAverage = (roundOne, roundTow, roundThree) => (roundOne + roundTow + roundThree) / 3;
+const calcAverage = (roundOne, roundTow, roundThree) =>
+  (roundOne + roundTow + roundThree) / 3;
 
 // * Save Score form each Team
-const averageScoreDolphins = calcAverage(roundScores.dolphins.roundOne, roundScores.dolphins.roundTow, roundScores.dolphins.roundThree)
-const averageScoreKoalas = calcAverage(roundScores.koalas.roundOne, roundScores.koalas.roundTow, roundScores.koalas.roundThree)
+const averageScoreDolphins = calcAverage(
+  roundScores.dolphins.roundOne,
+  roundScores.dolphins.roundTow,
+  roundScores.dolphins.roundThree
+);
+const averageScoreKoalas = calcAverage(
+  roundScores.koalas.roundOne,
+  roundScores.koalas.roundTow,
+  roundScores.koalas.roundThree
+);
 
 // * saves the winner if they have twice as many points as the other team
-const checkWinner = function(averageScoreDolphins, averageScoreKoalas) {
-    if (averageScoreDolphins >= averageScoreKoalas * 2) {
-        return `Dolphins win (${averageScoreDolphins} vs. ${averageScoreKoalas})`
-    } else if (averageScoreKoalas >= averageScoreDolphins * 2) {
-        return `Koalas win (${averageScoreKoalas} vs. ${averageScoreDolphins})`
-    } else {
-        return 'No team wins';
-    }
-}
+const checkWinner = function (averageScoreDolphins, averageScoreKoalas) {
+  if (averageScoreDolphins >= averageScoreKoalas * 2) {
+    return `Dolphins win (${averageScoreDolphins} vs. ${averageScoreKoalas})`;
+  } else if (averageScoreKoalas >= averageScoreDolphins * 2) {
+    return `Koalas win (${averageScoreKoalas} vs. ${averageScoreDolphins})`;
+  } else {
+    return "No team wins";
+  }
+};
 
 // * Winner output with the Score
-console.log(checkWinner(averageScoreDolphins, averageScoreKoalas))
+console.log(checkWinner(averageScoreDolphins, averageScoreKoalas));
