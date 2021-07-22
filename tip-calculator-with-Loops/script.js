@@ -24,7 +24,7 @@ length of the array (because that's the number of elements)
 4.3. Call the function with the 'totals' array
 */
 
-"use strict";
+'use strict';
 
 // * Changeable invoices
 const invoices = {
@@ -40,7 +40,7 @@ const tipData = {
 };
 
 // * Tip calculation
-const calcTip = (invoiceAmount) =>
+const calcTip = invoiceAmount =>
   invoiceAmount < 50
     ? tipData.tipOne
     : invoiceAmount >= 50 && invoiceAmount <= 300
