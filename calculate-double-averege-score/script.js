@@ -54,7 +54,7 @@ const checkWinner = function(averageScoreDolphins, averageScoreKoalas) {
     } else if (averageScoreKoalas >= averageScoreDolphins * 2) {
         return `Koalas win (${averageScoreKoalas} vs. ${averageScoreDolphins})`
     } else {
-        return 'No team win';
+        return 'No team wins';
     }
 }
 
