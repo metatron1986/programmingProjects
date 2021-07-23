@@ -1,7 +1,10 @@
 'use strict';
 
-// * Number to be guessed
+// * Secret Number to be guessed
 let secretGuessNumber = Math.trunc(Math.random() * 20 + 1);
+
+// * Sets Score to any selected number
+document.querySelector('.score').textContent = '25';
 
 // * restarts game whenever you press again
 restartTheGame();
@@ -23,9 +26,9 @@ document.querySelector('.check').addEventListener('click', function () {
       guessedNumber(guessNumber);
       setColorForRightGuess();
     } else {
-      const loses = setScoreDown();
+      const pointsLost = setScoreDown();
       setColorForWrongGuess();
-      if (loses === 0) {
+      if (pointsLost === 0) {
         noMorePoints();
       }
     }
@@ -37,15 +40,15 @@ document.querySelector('.check').addEventListener('click', function () {
 
 // * Sets the background color for a wrongly guessed number briefly to red and then black
 function setColorForWrongGuess() {
-  document.body.style.backgroundColor = '#DC143C';
+  document.querySelector('body').style.backgroundColor = '#DC143C';
   setTimeout(function () {
-    document.body.style.backgroundColor = '#222';
+    document.querySelector('body').style.backgroundColor = '#222';
   }, 200);
 }
 
 // * Sets the background color for the correctly guessed number to green
 function setColorForRightGuess() {
-  document.body.style.backgroundColor = '#32CD32';
+  document.querySelector('body').style.backgroundColor = '#32CD32';
 }
 
 // * What should happen if you guess the number correctly
@@ -61,11 +64,11 @@ function guessedNumber(guessNumber) {
 
 // * Decreases the score by 1 for each incorrectly guessed number.
 function setScoreDown() {
-  const loses = Number(
+  const pointLoos = Number(
     (document.querySelector('.score').textContent =
       document.querySelector('.score').textContent - 1)
   );
-  return loses;
+  return pointLoos;
 }
 
 // * gives message if the number is too low or too high
@@ -80,7 +83,7 @@ function setNumberHighOrLowMessage(guessNumber) {
 // * If click on Again Button
 function restartTheGame() {
   document.querySelector('.again').addEventListener('click', function () {
-    document.body.style.background = '#222';
+    document.querySelector('body').style.backgroundColor = '#222';
     document.querySelector('.message').textContent = 'Starting guessing...';
     document.querySelector('.score').textContent = '20';
     document.querySelector('.guess').value = '';
@@ -96,7 +99,8 @@ function restartTheGame() {
 function noMorePoints() {
   document.querySelector('.guess').disabled = true;
   document.querySelector('.check').disabled = true;
-  document.querySelector('.message').textContent = 'You lose! Start again...';
+  document.querySelector('.message').textContent =
+    '💥 You lost! Start again...';
   document.querySelector('.check').style.backgroundColor = '#FF4500';
-  document.querySelector('body').style.background = '#DC143C';
+  document.querySelector('body').style.backgroundColor = '#DC143C';
 }
