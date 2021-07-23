@@ -91,6 +91,7 @@ function restartTheGame() {
   });
 }
 
+// * if Score is 0
 function noMorePoints() {
   document.querySelector('.guess').disabled = true;
   document.querySelector('.check').disabled = true;
