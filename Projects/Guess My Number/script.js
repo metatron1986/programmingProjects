@@ -4,7 +4,7 @@
 let secretGuessNumber = Math.trunc(Math.random() * 20 + 1);
 
 // * Sets Score to any selected number
-document.querySelector('.score').textContent = '25';
+document.querySelector('.score').textContent = '20';
 
 // * restarts game whenever you press again
 restartTheGame();
@@ -60,6 +60,7 @@ function guessedNumber(guessNumber) {
   document.querySelector('.guess').disabled = true;
   document.querySelector('.check').disabled = true;
   document.querySelector('.check').style.backgroundColor = '#DC143C';
+  document.querySelector('.number').style.width = '30rem';
 }
 
 // * Decreases the score by 1 for each incorrectly guessed number.
@@ -92,6 +93,7 @@ function restartTheGame() {
     document.querySelector('.check').style.backgroundColor = '#eee';
     document.querySelector('.number').textContent = '?';
     secretGuessNumber = Math.trunc(Math.random() * 20 + 1);
+    document.querySelector('.number').style.width = '15rem';
   });
 }
 
