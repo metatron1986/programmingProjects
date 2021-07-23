@@ -2,22 +2,31 @@
 
 // * Number to be guessed
 let guessNumber = Math.trunc(Math.random() * 20 + 1);
-console.log(guessNumber);
-playAgain();
+
+// * restarts game whenever you press again
+restartTheGame();
+
 // ********************** GAME **************************
 // ******************************************************
 document.querySelector('.check').addEventListener('click', function () {
   const num = Number(document.querySelector('.guess').value);
   setNumberHighOrLowMessage(num);
-  if (num === guessNumber) {
-    guessedNumber(num);
-    setColorForRightGuess();
+  // * if not a Number or empty
+  if (!num) {
+    document.querySelector('.message').textContent = '⛔️ No Number';
+  } else if (num < 1 || num > 20) {
+    document.querySelector('.message').textContent = '❌ only greater than 0 or less than 20';
   } else {
-    const loses = setScoreDown();
-    setColorForWrongGuess();
-    if (loses === 0) {
-      document.querySelector('.score').textContent = '20';
-      console.log('You lose!!! Please try again');
+    // * if a Number
+    if (num === guessNumber) {
+      guessedNumber(num);
+      setColorForRightGuess();
+    } else {
+      const loses = setScoreDown();
+      setColorForWrongGuess();
+      if (loses === 0) {
+        noMorePoints();
+      }
     }
   }
 });
@@ -47,7 +56,6 @@ function guessedNumber(num) {
   document.querySelector('.guess').disabled = true;
   document.querySelector('.check').disabled = true;
   document.querySelector('.check').style.backgroundColor = '#DC143C';
-  
 }
 
 // * Decreases the score by 1 for each incorrectly guessed number.
@@ -69,7 +77,7 @@ function setNumberHighOrLowMessage(num) {
 }
 
 // * If click on Again Button
-function playAgain() {
+function restartTheGame() {
   document.querySelector('.again').addEventListener('click', function () {
     document.body.style.background = '#222';
     document.querySelector('.message').textContent = 'Starting guessing...';
@@ -80,6 +88,13 @@ function playAgain() {
     document.querySelector('.check').style.backgroundColor = '#eee';
     document.querySelector('.number').textContent = '?';
     guessNumber = Math.trunc(Math.random() * 20 + 1);
-    console.log(guessNumber);
   });
+}
+
+function noMorePoints() {
+  document.querySelector('.guess').disabled = true;
+  document.querySelector('.check').disabled = true;
+  document.querySelector('.message').textContent = 'You lose! Start again...';
+  document.querySelector('.check').style.backgroundColor = '#FF4500';
+  document.querySelector('body').style.background = '#DC143C';
 }
