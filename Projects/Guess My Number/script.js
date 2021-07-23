@@ -1,7 +1,7 @@
 'use strict';
 
 // * Number to be guessed
-let guessNumber = Math.trunc(Math.random() * 20 + 1);
+let secretGuessNumber = Math.trunc(Math.random() * 20 + 1);
 
 // * restarts game whenever you press again
 restartTheGame();
@@ -9,17 +9,18 @@ restartTheGame();
 // ********************** GAME **************************
 // ******************************************************
 document.querySelector('.check').addEventListener('click', function () {
-  const num = Number(document.querySelector('.guess').value);
-  setNumberHighOrLowMessage(num);
+  const guessNumber = Number(document.querySelector('.guess').value);
+  setNumberHighOrLowMessage(guessNumber);
   // * if not a Number or empty
-  if (!num) {
+  if (!guessNumber) {
     document.querySelector('.message').textContent = '⛔️ No Number';
-  } else if (num < 1 || num > 20) {
-    document.querySelector('.message').textContent = '❌ only greater than 0 or less than 20';
+  } else if (guessNumber < 1 || guessNumber > 20) {
+    document.querySelector('.message').textContent =
+      '❌ only greater than 0 or less than 20';
   } else {
     // * if a Number
-    if (num === guessNumber) {
-      guessedNumber(num);
+    if (guessNumber === secretGuessNumber) {
+      guessedNumber(guessNumber);
       setColorForRightGuess();
     } else {
       const loses = setScoreDown();
@@ -48,8 +49,8 @@ function setColorForRightGuess() {
 }
 
 // * What should happen if you guess the number correctly
-function guessedNumber(num) {
-  document.querySelector('.number').textContent = num;
+function guessedNumber(guessNumber) {
+  document.querySelector('.number').textContent = guessNumber;
   document.querySelector('.message').textContent = '🎉 Correct Number';
   document.querySelector('.highscore').textContent =
     document.querySelector('.score').textContent;
@@ -68,8 +69,8 @@ function setScoreDown() {
 }
 
 // * gives message if the number is too low or too high
-function setNumberHighOrLowMessage(num) {
-  if (num < guessNumber) {
+function setNumberHighOrLowMessage(guessNumber) {
+  if (guessNumber < secretGuessNumber) {
     document.querySelector('.message').textContent = '📉 Too low!';
   } else {
     document.querySelector('.message').textContent = '📈 Too high!';
@@ -87,7 +88,7 @@ function restartTheGame() {
     document.querySelector('.check').disabled = false;
     document.querySelector('.check').style.backgroundColor = '#eee';
     document.querySelector('.number').textContent = '?';
-    guessNumber = Math.trunc(Math.random() * 20 + 1);
+    secretGuessNumber = Math.trunc(Math.random() * 20 + 1);
   });
 }
 
