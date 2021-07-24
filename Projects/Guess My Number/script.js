@@ -2,6 +2,8 @@
 
 // * Secret Number to be guessed
 let secretGuessNumber = Math.trunc(Math.random() * 20 + 1);
+
+// * Changeable variable
 let highscore = 0;
 let score = 0;
 
@@ -59,13 +61,11 @@ function guessedNumber(guessNumber) {
   document.querySelector('.message').textContent = '🎉 Correct Number';
   score = Number(document.querySelector('.score').textContent);
   highscore = Number(document.querySelector('.highscore').textContent);
-    if (score > highscore) {
-       highscore = document.querySelector('.highscore').textContent =
-    document.querySelector('.score').textContent;
+  if (score > highscore) {
+    highscore = document.querySelector('.highscore').textContent =
+      document.querySelector('.score').textContent;
     highscore = Number(highscore);
-    }
-    console.log(highscore);
-    console.log(score);
+  }
   document.querySelector('.guess').disabled = true;
   document.querySelector('.check').disabled = true;
   document.querySelector('.check').style.backgroundColor = '#DC143C';
