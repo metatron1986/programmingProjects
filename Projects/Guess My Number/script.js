@@ -2,6 +2,8 @@
 
 // * Secret Number to be guessed
 let secretGuessNumber = Math.trunc(Math.random() * 20 + 1);
+let highscore = 0;
+let score = 0;
 
 // * Sets Score to any selected number
 document.querySelector('.score').textContent = '20';
@@ -55,8 +57,15 @@ function setColorForRightGuess() {
 function guessedNumber(guessNumber) {
   document.querySelector('.number').textContent = guessNumber;
   document.querySelector('.message').textContent = '🎉 Correct Number';
-  document.querySelector('.highscore').textContent =
+  score = Number(document.querySelector('.score').textContent);
+  highscore = Number(document.querySelector('.highscore').textContent);
+    if (score > highscore) {
+       highscore = document.querySelector('.highscore').textContent =
     document.querySelector('.score').textContent;
+    highscore = Number(highscore);
+    }
+    console.log(highscore);
+    console.log(score);
   document.querySelector('.guess').disabled = true;
   document.querySelector('.check').disabled = true;
   document.querySelector('.check').style.backgroundColor = '#DC143C';
@@ -84,15 +93,15 @@ function setNumberHighOrLowMessage(guessNumber) {
 // * If click on Again Button
 function restartTheGame() {
   document.querySelector('.again').addEventListener('click', function () {
-    document.querySelector('body').style.backgroundColor = '#222';
+    secretGuessNumber = Math.trunc(Math.random() * 20 + 1);
     document.querySelector('.message').textContent = 'Starting guessing...';
     document.querySelector('.score').textContent = '20';
     document.querySelector('.guess').value = '';
+    document.querySelector('.number').textContent = '?';
     document.querySelector('.guess').disabled = false;
     document.querySelector('.check').disabled = false;
+    document.querySelector('body').style.backgroundColor = '#222';
     document.querySelector('.check').style.backgroundColor = '#eee';
-    document.querySelector('.number').textContent = '?';
-    secretGuessNumber = Math.trunc(Math.random() * 20 + 1);
     document.querySelector('.number').style.width = '15rem';
   });
 }
