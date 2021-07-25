@@ -17,13 +17,14 @@ restartTheGame();
 // ******************************************************
 document.querySelector('.check').addEventListener('click', function () {
   const guessNumber = Number(document.querySelector('.guess').value);
-  setNumberHighOrLowMessage(guessNumber);
+  displayMessage(
+    guessNumber < secretGuessNumber ? '📉 Too low!' : '📈 Too high!'
+  );
   // * if not a Number or empty
   if (!guessNumber) {
-    document.querySelector('.message').textContent = '⛔️ No Number';
+    displayMessage('⛔️ No Number');
   } else if (guessNumber < 1 || guessNumber > 20) {
-    document.querySelector('.message').textContent =
-      '❌ only greater than 0 or less than 20';
+    displayMessage('❌ only greater than 0 or less than 20');
   } else {
     // * if a Number
     if (guessNumber === secretGuessNumber) {
@@ -58,7 +59,7 @@ function setColorForRightGuess() {
 // * What should happen if you guess the number correctly
 function guessedNumber(guessNumber) {
   document.querySelector('.number').textContent = guessNumber;
-  document.querySelector('.message').textContent = '🎉 Correct Number';
+  displayMessage('🎉 Correct Number');
   score = Number(document.querySelector('.score').textContent);
   highscore = Number(document.querySelector('.highscore').textContent);
   if (score > highscore) {
@@ -81,20 +82,11 @@ function setScoreDown() {
   return pointLoos;
 }
 
-// * gives message if the number is too low or too high
-function setNumberHighOrLowMessage(guessNumber) {
-  if (guessNumber < secretGuessNumber) {
-    document.querySelector('.message').textContent = '📉 Too low!';
-  } else {
-    document.querySelector('.message').textContent = '📈 Too high!';
-  }
-}
-
 // * If click on Again Button
 function restartTheGame() {
   document.querySelector('.again').addEventListener('click', function () {
     secretGuessNumber = Math.trunc(Math.random() * 20 + 1);
-    document.querySelector('.message').textContent = 'Starting guessing...';
+    displayMessage('Starting guessing...');
     document.querySelector('.score').textContent = '20';
     document.querySelector('.guess').value = '';
     document.querySelector('.number').textContent = '?';
@@ -110,8 +102,17 @@ function restartTheGame() {
 function noMorePoints() {
   document.querySelector('.guess').disabled = true;
   document.querySelector('.check').disabled = true;
-  document.querySelector('.message').textContent =
-    '💥 You lost! Start again...';
+  displayMessage('💥 You lost! Start again...');
   document.querySelector('.check').style.backgroundColor = '#FF4500';
   document.querySelector('body').style.backgroundColor = '#DC143C';
+}
+
+// * Sets a message for all actions in the application
+function displayMessage(message) {
+  document.querySelector('.message').textContent = message;
+}
+
+// * Sets color for everything
+function setBackgroundColorForBody(backgroundColor) {
+    document.querySelector('.body').style.backgroundColor = backgroundColor;
 }
